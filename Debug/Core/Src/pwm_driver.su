@@ -1,0 +1,3 @@
+../Core/Src/pwm_driver.c:4:6:pwm_config	16	static
+../Core/Src/pwm_driver.c:29:6:pwm_duty1	16	static
+../Core/Src/pwm_driver.c:33:6:pwm_duty2	16	static

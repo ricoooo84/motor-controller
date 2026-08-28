@@ -1,0 +1,4 @@
+../Core/Src/encoder_driver.c:5:6:encoder_config	1
+../Core/Src/encoder_driver.c:27:10:encoder_count	1
+../Core/Src/encoder_driver.c:31:6:encoder_zero	1
+../Core/Src/encoder_driver.c:35:9:encoder_delta	1

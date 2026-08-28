@@ -1,0 +1,4 @@
+../Core/Src/uart_driver.c:4:15:uart_write	5
+../Core/Src/uart_driver.c:25:15:uart_read	4
+../Core/Src/uart_driver.c:43:15:uart_take	4
+../Core/Src/uart_driver.c:58:6:uart_irq	13
