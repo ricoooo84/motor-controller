@@ -1,7 +1,0 @@
-../Drivers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
-../Drivers/CMSIS/Include/core_cm4.h:1814:22:__NVIC_SetPriority	16	static
-../Core/Src/control_driver.c:3:14:delta_to_rpm	24	static
-../Core/Src/control_driver.c:8:6:control_config	16	static
-../Core/Src/control_driver.c:25:6:control_cfg_all	8	static
-../Core/Src/control_driver.c:31:6:control_irq	16	static
-../Core/Src/control_driver.c:39:6:control_loop	24	static

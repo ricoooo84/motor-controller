@@ -1,0 +1,155 @@
+-----------------------------------------successful pwm:
+
+	pwm_config(PWM_TIMER);
+
+	// takes in 0-255
+	pwm_duty1(PWM_TIMER, 200);
+	pwm_duty2(PWM_TIMER, 50);
+	
+-----------------------------------------successful motor:
+	
+  pwm_config(PWM_TIMER);
+
+  motor_move(-255);
+  HAL_Delay(1000);
+  motor_move(-100);
+  HAL_Delay(1000);
+  motor_move(0);
+  HAL_Delay(1000);
+  motor_move(100);
+  HAL_Delay(1000);
+  motor_move(255);
+  HAL_Delay(1000);
+
+  motor_brake();
+  
+  --------------------------------------- encoder:
+  
+    /* USER CODE BEGIN 2 */
+
+  //printf
+  setvbuf(stdout, NULL, _IONBF, 0);
+  pwm_config(PWM_TIMER);
+  encoder_config(ENCODER_TIMER);
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
+	  motor_move(-100);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(1000);
+	  motor_move(0);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(1000);
+	  motor_move(-100);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(1000);
+	  motor_move(0);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(2000);
+	  motor_move(100);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(1000);
+	  motor_move(0);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(1000);
+	  motor_move(100);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(1000);
+	  motor_move(0);
+	  printf("encoder: %ld\r\n", encoder_delta(ENCODER_TIMER));
+	  HAL_Delay(2000);
+
+
+    /* USER CODE BEGIN 3 */
+  }
+  
+  
+ --------------------------------------------- control loop
+ 
+   /* USER CODE BEGIN 2 */
+
+  //printf
+  setvbuf(stdout, NULL, _IONBF, 0);
+
+  control_cfg_all();
+
+
+  motor_move(90);
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
+
+	  if (control_flag == 1) {
+		  control_flag = 0;
+
+		  control_loop();
+	  }
+
+    /* USER CODE BEGIN 3 */
+  }
+  
+----------------------------------------------- successful uart
+
+  /* USER CODE BEGIN 2 */
+
+  uart_cfg(&u);
+  uint8_t rec[RX_BUF_SIZE];
+  int16_t aaaa = 0;
+  char tra[TX_BUF_SIZE];
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
+	  if (uart_read_line(&u, rec) == 0) {
+	      uart_parse_int(rec, &aaaa);
+
+	  }
+
+	  if (aaaa) {
+		  sprintf(tra, "%d\r\n", aaaa);
+		  uart_write(&u, tra);
+	  }
+
+	  HAL_Delay(1000);
+
+    /* USER CODE BEGIN 3 */
+  }
+  
+  
+  
+  -------------------------------------------- control loop w/ uart
+  
+    /* USER CODE BEGIN 2 */
+
+
+  uart_cfg(&u);
+  control_cfg_all();
+
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
+
+
+	  if (control_flag == 1) {
+		  control_flag = 0;
+
+		  control_loop();
+	  }
+
+    /* USER CODE BEGIN 3 */
+  }

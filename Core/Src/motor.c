@@ -2,7 +2,6 @@
 
 void motor_move(int16_t move) {
 	// move is -255 to 255
-
 	if (move == 0) {
 		pwm_duty1(PWM_TIMER, (uint8_t)move);
 		pwm_duty2(PWM_TIMER, (uint8_t)move);

@@ -1,2 +1,0 @@
-../Core/Src/adc_dma_driver.c:3:6:adc_start	4	static
-../Core/Src/adc_dma_driver.c:31:6:adc_amps	4	static
